@@ -1,0 +1,59 @@
+/*
+ * @Author: hapick 
+ * @Date: 2018-04-23 17:31:01 
+ * @Last Modified by: hapick
+ * @Last Modified time: 2018-04-23 17:36:41
+ */
+
+* {
+    box-sizing: border-box;
+    font-family: Hack,-apple-system,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Arial,sans-serif;
+}
+
+body, h1, h2, h3, h4, h5, h6, ul, ol, button {margin: 0; padding: 0;}
+
+ul, ol {list-style: none;}
+
+input:focus, textarea:focus {
+    box-shadow: 0 0 2px 1px #3f51b5;
+}
+
+/* 按钮 */
+button {
+	position: relative;
+	display: inline-block;
+	min-width: 88px;
+	height: 36px;
+	padding: 0 16px;
+	margin: 0;
+	overflow: hidden;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 36px;
+	color: inherit;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	letter-spacing: .04em;
+	white-space: nowrap;
+	vertical-align: middle;
+	touch-action: manipulation;
+	zoom: 1;
+	user-select: none;
+	background: 0 0;
+	border: none;
+	border-radius: 2px;
+	outline: 0;
+	transition: all .2s cubic-bezier(.4,0,.2,1),box-shadow .2s cubic-bezier(.4,0,1,1),-webkit-box-shadow .2s cubic-bezier(.4,0,1,1);
+	will-change: box-shadow;
+	-webkit-user-drag: none;
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+button:hover {
+	background-color: rgba(0,0,0,.1);
+	box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+}
+button:active {
+	background-color: rgba(0,0,0,.165);
+	box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+}

@@ -1,8 +1,9 @@
-* {box-sizing: border-box;}
-
-body, h1, h2, h3, h4, h5, h6, ul, ol, button {margin: 0; padding: 0;}
-
-ul, ol {list-style: none;}
+/*
+ * @Author: hapick 
+ * @Date: 2018-04-23 17:28:51 
+ * @Last Modified by: hapick
+ * @Last Modified time: 2018-04-23 17:55:33
+ */
 
 html, body {
     height: 100%;
@@ -60,4 +61,40 @@ html, body {
 
 .tabs .tab-views .view {
     flex: 1px;
+    display: flex;
+    padding: 20px;
+}
+
+.tabs .tab-views .view .left,
+.tabs .tab-views .view .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tabs .tab-views .view .left textarea,
+.tabs .tab-views .view .right textarea {
+    flex: 1;
+    padding: 10px;
+    resize: none;
+    font-size: 18px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    outline: none;
+}
+
+.output:focus {
+    box-shadow: 0 0 0 0 transparent;
+}
+
+.tabs .tab-views .view .control {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.tabs .tab-views .view .control button {
+    margin: 10px 0;
 }
