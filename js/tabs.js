@@ -1,14 +1,15 @@
 /*
  * @Author: hapick 
  * @Date: 2018-04-23 17:53:52 
- * @Last Modified by:   hapick 
- * @Last Modified time: 2018-04-23 17:53:52 
+ * @Last Modified by: hapick
+ * @Last Modified time: 2018-04-24 18:33:57
  */
 
-/**
- * tabs 切换组件
- */
 class Tabs {
+    /**
+     * Tabs 切换组件
+     * @memberof Tabs
+     */
     constructor() {
         this.el = document.querySelector('.tabs')
         this.nav = this.el.querySelector('nav')
@@ -20,6 +21,11 @@ class Tabs {
         this.init().clickTabs()
         this.windowResize()
     }
+    /**
+     * 初始化 Tab
+     * @returns this
+     * @memberof Tabs
+     */
     init() {
         let len = this.len
         let iWidth = this.el.clientWidth / len
@@ -32,6 +38,11 @@ class Tabs {
         }
         return this
     }
+    /**
+     * 点击 Tab
+     * @returns this
+     * @memberof Tabs
+     */
     clickTabs() {
         for (let i = 0; i < this.len; i++) {
             this.navItem[i].addEventListener('click', e => {
@@ -44,12 +55,20 @@ class Tabs {
         }
         return this
     }
+    /**
+     * 切换对应的 Tab 和 View
+     * @param {any} index 参数为数字
+     * @memberof Tabs
+     */
     changeView(index) {
         let view = this.views.querySelector('.view')
         let w = view.clientWidth * index
-        log(typeof index, typeof view.clientWidth)
         this.views.style.transform = `translate3d(-${w}px, 0px, 0px)`
     }
+    /**
+     * 监听窗口大小变化，重新初始化
+     * @memberof Tabs
+     */
     windowResize() {
         window.onresize = () => {
             this.el = document.querySelector('.tabs')

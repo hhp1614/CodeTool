@@ -2,7 +2,7 @@
  * @Author: hapick 
  * @Date: 2018-04-23 17:28:51 
  * @Last Modified by: hapick
- * @Last Modified time: 2018-04-23 17:55:33
+ * @Last Modified time: 2018-04-25 15:40:46
  */
 
 html, body {
@@ -63,13 +63,13 @@ html, body {
     flex: 1px;
     display: flex;
     padding: 20px;
+    flex-direction: column;
 }
 
 .tabs .tab-views .view .left,
 .tabs .tab-views .view .right {
     flex: 1;
     display: flex;
-    flex-direction: column;
 }
 
 .tabs .tab-views .view .left textarea,
@@ -81,6 +81,7 @@ html, body {
     border-radius: 4px;
     letter-spacing: 1px;
     outline: none;
+    line-height: 1.5;
 }
 
 .output:focus {
@@ -89,12 +90,24 @@ html, body {
 
 .tabs .tab-views .view .control {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    margin: 0 20px;
 }
 
-.tabs .tab-views .view .control button {
-    margin: 10px 0;
+.control button {
+    margin: 10px 5px;
+    background: #3f51b5 !important;
+    color: #fff !important;
+}
+
+.control button:hover {
+    opacity: .8;
+}
+
+.control .clear {
+    background: #ff4081 !important;
+}
+
+.encrypt .input-field {
+    width: 130px;
 }

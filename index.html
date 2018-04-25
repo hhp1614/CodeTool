@@ -16,32 +16,55 @@
 		<div class="tabs">
             <nav>
                 <div class="item">编码/解码</div>
-                <div class="item">2</div>
+                <div class="item">加密</div>
                 <div class="item">3</div>
                 <i></i>
             </nav>
             <div class="tab-views">
                 <div class="view code">
                     <div class="left">
-                        <textarea class="input"></textarea>
+                        <textarea class="input" placeholder="将需要转换编码的文本填到这里~"></textarea>
                     </div>
                     <div class="control">
-                        <button class="clear">Clear 清空</button>
-                        <button class="url-encode">Encode 编码</button>
-                        <button class="url-decode">Decode 解码</button>
+                        <button class="clear">清空</button>
+                        <button class="url-encode">url编码</button>
+                        <button class="url-decode">url解码</button>
+                        <button class="unicode-encode">unicode编码</button>
+                        <button class="unicode-decode">unicode解码</button>
                     </div>
                     <div class="right">
-                        <textarea class="output" readonly></textarea>
+                        <textarea class="output" placeholder="结果会显示在这里~" readonly></textarea>
                     </div>
                 </div>
-                <div class="view">5</div>
-                <div class="view">6</div>
+                <div class="view encrypt">
+                    <div class="left">
+                        <textarea class="input" placeholder="将需要加密的文本填到这里~"></textarea>
+                    </div>
+                    <div class="control">
+                        <button class="clear">清空</button>
+                        <div class="input-field">
+                            <label for="encrypt-lv">加密次数</label>
+                            <input id="encrypt-lv" type="text" value="1" maxlength="5">
+                        </div>
+                        <button class="md5">md5加密</button>
+                        <button class="sha1">sha1加密</button>
+                    </div>
+                    <div class="right">
+                        <textarea class="output" placeholder="结果会显示在这里~" readonly></textarea>
+                    </div>
+                </div>
+                <div class="view">3</div>
             </div>
         </div>
 	</div>
 
+    <script>const log = console.log.bind(console);</script>
+    <script src="./lib/hashes/hashes.min.js"></script>
+    <script src="./js/base.js"></script>
+    <script src="./js/input.js"></script>
     <script src="./js/tabs.js"></script>
     <script src="./js/url_code.js"></script>
+    <script src="./js/encrypt.js"></script>
     <script src="./js/index.js"></script>
 </body>
 
