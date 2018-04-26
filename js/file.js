@@ -2,7 +2,7 @@
  * @Author: hapick 
  * @Date: 2018-04-26 11:30:14 
  * @Last Modified by: hapick
- * @Last Modified time: 2018-04-26 18:27:53
+ * @Last Modified time: 2018-04-26 18:34:06
  */
 
 class FileHash {
@@ -45,7 +45,7 @@ class FileHash {
         let currentChunk = 0
 
         fileReader.onload = e => {
-            log('读取文件进度：', currentChunk + 1, ' / ', chunks);
+            log('读取文件进度：', currentChunk + 1, '/', chunks);
             spark.appendBinary(e.target.result); // append binary string
             currentChunk++;
             if (currentChunk < chunks) {
