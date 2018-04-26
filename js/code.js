@@ -2,7 +2,7 @@
  * @Author: hapick 
  * @Date: 2018-04-23 17:56:57 
  * @Last Modified by: hapick
- * @Last Modified time: 2018-04-25 18:06:01
+ * @Last Modified time: 2018-04-26 10:49:48
  */
 
 class Code {
@@ -19,6 +19,8 @@ class Code {
             urlDecode: document.querySelector('.code .url-decode'),
             unicodeEncode: document.querySelector('.code .unicode-encode'),
             unicodeDecode: document.querySelector('.code .unicode-decode'),
+            base64Encode: document.querySelector('.code .base64-encode'),
+            base64Decode: document.querySelector('.code .base64-decode'),
         }
         this.init()
     }
@@ -50,10 +52,14 @@ class Code {
         let urlDe = this.btns.urlDecode
         let uniEn = this.btns.unicodeEncode
         let uniDe = this.btns.unicodeDecode
+        let b64En = this.btns.base64Encode
+        let b64De = this.btns.base64Decode
         this.bindEvent(urlEn, this.urlEncode)
         this.bindEvent(urlDe, this.urlDecode)
         this.bindEvent(uniEn, this.unicodeEncode)
         this.bindEvent(uniDe, this.unicodeDecode)
+        this.bindEvent(b64En, this.base64Encode)
+        this.bindEvent(b64De, this.base64Decode)
     }
     /**
      * 绑定事件
@@ -154,14 +160,12 @@ class Code {
         }
         return str
     }
-    utf8Encode(ipt) {
-        let res = utf8Encode(ipt)
-        log(res.toString(16))
+    base64Encode(ipt) {
+        let res = Base64.encode(ipt)
         return res
     }
-    utf8Decode(ipt) {
-        let res = utf8Decode(ipt)
-        log(res)
+    base64Decode(ipt) {
+        let res = Base64.decode(ipt)
         return res
     }
 }

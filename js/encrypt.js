@@ -2,7 +2,7 @@
  * @Author: hapick 
  * @Date: 2018-04-24 18:20:17 
  * @Last Modified by: hapick
- * @Last Modified time: 2018-04-25 17:41:42
+ * @Last Modified time: 2018-04-26 10:51:03
  */
 
 class Encrypt {
@@ -60,7 +60,7 @@ class Encrypt {
         let count = Number(val)
         let res = ipt
         for (let i = 0; i < count; i++) {
-            res = MD5.hex(res)
+            res = md5(res)
         }
         return res
     }
@@ -71,7 +71,7 @@ class Encrypt {
         let count = Number(val)
         let res = ipt
         for (let i = 0; i < count; i++) {
-            res = SHA1.hex(res)
+            res = sha1(res)
         }
         return res
     }

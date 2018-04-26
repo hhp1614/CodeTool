@@ -2,7 +2,7 @@
  * @Author: hapick 
  * @Date: 2018-04-23 17:28:51 
  * @Last Modified by: hapick
- * @Last Modified time: 2018-04-25 15:40:46
+ * @Last Modified time: 2018-04-26 18:11:02
  */
 
 html, body {
@@ -110,4 +110,12 @@ html, body {
 
 .encrypt .input-field {
     width: 130px;
+}
+
+.file {
+    line-height: 2;
+}
+
+.file .file-content {
+    margin-top: 20px;
 }

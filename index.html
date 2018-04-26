@@ -17,7 +17,7 @@
             <nav>
                 <div class="item">编码/解码</div>
                 <div class="item">加密</div>
-                <div class="item">3</div>
+                <div class="item">File Hash</div>
                 <i></i>
             </nav>
             <div class="tab-views">
@@ -31,6 +31,8 @@
                         <button class="url-decode">url解码</button>
                         <button class="unicode-encode">unicode编码</button>
                         <button class="unicode-decode">unicode解码</button>
+                        <button class="base64-encode">base64编码</button>
+                        <button class="base64-decode">base64解码</button>
                     </div>
                     <div class="right">
                         <textarea class="output" placeholder="结果会显示在这里~" readonly></textarea>
@@ -53,18 +55,30 @@
                         <textarea class="output" placeholder="结果会显示在这里~" readonly></textarea>
                     </div>
                 </div>
-                <div class="view">3</div>
+                <div class="view file">
+                    <div>
+                        <button class="select-file">选择文件</button>
+                        <input style="display: none;" type="file" id="file">
+                    </div>
+                    <div class="file-content">
+                        <div class="file-info"></div>
+                        <div id="file-content"></div>
+                    </div>
+                </div>
             </div>
         </div>
 	</div>
 
     <script>const log = console.log.bind(console);</script>
-    <script src="./lib/hashes/hashes.min.js"></script>
-    <script src="./js/base.js"></script>
+    <script src="./lib/md5/md5.min.js"></script>
+    <script src="./lib/md5/spark-md5.min.js"></script>
+    <script src="./lib/sha1/sha1.min.js"></script>
+    <script src="./lib/base64/base64.min.js"></script>
     <script src="./js/input.js"></script>
     <script src="./js/tabs.js"></script>
-    <script src="./js/url_code.js"></script>
+    <script src="./js/code.js"></script>
     <script src="./js/encrypt.js"></script>
+    <script src="./js/file.js"></script>
     <script src="./js/index.js"></script>
 </body>
 
