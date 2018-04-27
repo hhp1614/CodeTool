@@ -2,15 +2,16 @@
  * @Author: hapick 
  * @Date: 2018-04-26 11:30:14 
  * @Last Modified by: hapick
- * @Last Modified time: 2018-04-26 18:34:06
+ * @Last Modified time: 2018-04-27 11:30:07
  */
 
 class FileHash {
     constructor() {
         this.ipt = document.querySelector('#file')
-        this.content = document.querySelector('#file-content')
+        this.fileMD5 = document.querySelector('.file-md5')
         this.btn = document.querySelector('.select-file')
-        this.fileInfo = document.querySelector('.file-info')
+        this.info = document.querySelector('.file-info')
+        this.person = document.querySelector('.file-person')
         this.init()
     }
     init() {
@@ -22,49 +23,64 @@ class FileHash {
             // console.dir(ipt)
             if (files.length) {
                 let file = files[0]
+                let name = file.name
+                let extname = /\.[^\.]+$/.exec(name)
+                let type = file.type
                 let size = this.fileSize(file.size)
-                this.fileInfo.innerHTML = `
-                    <div>文件名：${file.name}</div>
-                    <div>文件类型：${file.type}</div>
+                if (type) {
+                    type = `(${type})`
+                }
+                this.info.innerHTML = `
+                    <div>文件名：${name}</div>
+                    <div>文件类型：${extname} ${type}</div>
                     <div>文件大小：${size}</div>
                 `
-                // person 进度
                 this.calculate(file, this.content)
             }
         })
     }
     calculate(file, content) {
-        // content = document.querySelector('#file-content')
-        // file = this.ipt.files[0]
         let fileReader = new FileReader()
         let fp = File.prototype
         let fpSlice = fp.mozSlice || fp.webkitSlice || fp.slice
         let spark = new SparkMD5()
-        let chunkSize = 2097152 // read in chunks of 2MB
+        let chunkSize = 2097152 // 读取速度 2MB
         let chunks = Math.ceil(file.size / chunkSize)
         let currentChunk = 0
-
         fileReader.onload = e => {
-            log('读取文件进度：', currentChunk + 1, '/', chunks);
-            spark.appendBinary(e.target.result); // append binary string
-            currentChunk++;
+            let person = parseInt((currentChunk + 1) / chunks * 100) + '%'
+            this.showPerson('读取文件进度：', 'red', person)
+            spark.appendBinary(e.target.result) // 添加二进制数
+            currentChunk++
             if (currentChunk < chunks) {
-                loadNext();
+                loadNext()
             } else {
-                log('加载完成');
-                content.innerText = 'MD5 hash值：' + spark.end();
-                // log('computed hash', spark.end()); // compute hash
+                let end = spark.end()
+                this.showPerson('', 'green', '读取文件完成')
+                this.showfileMD5('red', end)
             }
         }
-
+        fileReader.onerror =  () => {
+            alert('error')
+        }
         function loadNext() {
             let start = currentChunk * chunkSize
             let end = (start + chunkSize >= file.size)
                 ? file.size
                 : start + chunkSize
-            fileReader.readAsBinaryString(fpSlice.call(file, start, end));
+            fileReader.readAsBinaryString(fpSlice.call(file, start, end))
         }
         loadNext()
+    }
+    showPerson(title, color, msg) {
+        this.person.innerHTML = `
+            ${title}<span style="color: ${color}">${msg}</span>
+        `
+    }
+    showfileMD5(color, msg) {
+        this.fileMD5.innerHTML = `
+            MD5 Hash值：<span style="color: ${color}">${msg}</span>
+        `
     }
     fileSize(value) {
         if (null == value || value == '') {
@@ -81,45 +97,3 @@ class FileHash {
 }
 
 new FileHash()
-
-const fileInput = document.querySelector('#file')
-// const btn = document.querySelector('#file-btn')
-// const fileText = document.querySelector('#file-text')
-
-// fileInput.addEventListener('change', calculate)
-
-// function calculate() {
-//     const box = document.getElementById('box')
-//     const file = document.getElementById("file").files[0]
-//     const fileReader = new FileReader()
-//     let fp = File.prototype
-//     const blobSlice = fp.mozSlice || fp.webkitSlice || fp.slice
-//     const spark = new SparkMD5()
-//     const chunkSize = 2097152 // read in chunks of 2MB
-//     const chunks = Math.ceil(file.size / chunkSize)
-//     let currentChunk = 0
-
-//     fileReader.onload = (e) => {
-//         log("read chunk nr", currentChunk + 1, "of", chunks);
-//         spark.appendBinary(e.target.result); // append binary string
-//         currentChunk++;
-
-//         if (currentChunk < chunks) {
-//             loadNext();
-//         } else {
-//             log("finished loading");
-//             box.innerText = 'MD5 hash:' + spark.end();
-//             log("computed hash", spark.end()); // compute hash
-//         }
-//     };
-
-//     function loadNext() {
-//         let start = currentChunk * chunkSize
-//         let end = (start + chunkSize >= file.size)
-//             ? file.size
-//             : start + chunkSize
-//         fileReader.readAsBinaryString(blobSlice.call(file, start, end));
-//     };
-
-//     loadNext();
-// }  
